@@ -1,0 +1,162 @@
+1 - Componente Form
+ 1.1 Criar um componente dentro da pasta src/components
+ 1.2 Renderizar no componente App
+ 1.3 Criar componente Input com label
+
+ 1.4 Passar via props o tipo, id, value, onChange
+ 1.5 Input do tipo "text" recebe 'data-testid="name-input"'
+	* Atributo	->	Props
+	 * value		cardName
+	 * onChange		onInputChange
+
+ 1.6 Textarea recebe 'data-testid="description-input"'
+	* Atributo	->	Props
+	 * value		cardDescription
+	 * onChange		onInputChange
+
+ 1.7 Input do tipo "number" recebem:
+	* 'data-testid="attr1-input"'
+	* 'data-testid="attr2-input"'
+	* 'data-testid="attr3-input"'
+
+	* Atributo	->	Props
+	 * value		cardAttr1 | cardAttr2 | cardAttr3
+	 * onChange		onInputChange
+
+ 1.8 Input do tipo "text" recebe 'data-testid="image-input"'
+	* Atributo	->	Props
+	 * value		cardImage
+	 * onChange		onInputChange
+
+ 1.9 Select recebe 'data-testid="rare-input"' e array de options:
+	* normal
+	* raro
+	* muito raro
+
+	* Atributo	->	Props
+	 * value		cardRare
+	 * onChange		onInputChange
+
+ 1.10 Input do tipo "checkbox" recebe 'data-testid="trunfo-input"'
+	* Atributo	->	Props
+	 * checked		cardTrunfo
+	 * onChange		onInputChange
+
+ 1.11 Button do tipo "submit" recebe 'data-testid="save-button"'
+	* Atributo	->	Props
+	 * disabled		isSaveButtonDisabled
+	 * onClick		onSaveButtonClick
+
+2 - Adicionando Props
+ 2.1 Componente Form recebe as propriedades: 
+  ** Props são montadas no state do componente App com exceção das callback
+	* "cardName" -> string
+	* "cardDescription" -> string
+	* "cardAttr1" -> string
+	* "cardAttr2" -> string
+	* "cardAttr3" -> string
+	* "cardImage" -> string
+	* "cardRare" -> string
+	* "cardTrunfo" -> boolean
+	* "hasTrunfo" -> boolean
+	* "isSaveButtonDisabled" -> boolean
+	* "onInputChange" -> callback
+	* "onSaveButtonClick" -> callback
+
+3 - Componente Card
+ 3.1 Criar um componente dentro da pasta src/components
+ 3.2 Renderizar no componente App
+ 3.3 Recebe as propriedades:
+	* "cardName" -> string
+	* "cardDescription" -> string
+	* "cardAttr1" -> string
+	* "cardAttr2" -> string
+	* "cardAttr3" -> string
+	* "cardImage" -> string
+	* "cardRare" -> string
+	* "cardTrunfo" -> boolean
+	* "hasTrunfo" -> boolean
+ 3.4 Recebe id 'data-testid="name-card"'
+ 3.5 Renderiza imagem com src "cardImage" e alt"cardName". Com id 'data-testid="image-card"'
+ 3.6 Renderiza p com "cardDescription". Com id 'data-testid="description-card"'
+ 3.7 Renderiza span com "cardAttr1". Com id 'data-testid="attr1-card"'
+ 3.8 Renderiza span com "cardAttr2". Com id 'data-testid="attr2-card"'
+ 3.9 Renderiza span com "cardAttr3". Com id 'data-testid="attr3-card"'
+ 3.10 Renderiza strong com texto 'Super Trunfo' quando "cardTrunfo" for true. Com id 'data-testid="trunfo-card"'
+
+4 - OnInputChange
+ 4.1 Criar lógica da função onInputChange
+
+5 - Validações 
+ 5.1 Habilitar botão depois dos campos serem preenchidos
+ 5.2 Atributos 1,2 e 3 devem ser > 0 < 90
+ 5.3 Soma dos três atributos deve ir até 210
+ 
+6 - Botão de salvar
+ 6.1 Criar lógica para o botão
+ 6.2 Salvar lista de cartas em um novo state -> [{carta}]
+ 6.3 Limpar campos Nome, Descrição, Imagem
+ 6.4 Atributos voltam a ter valor 0
+ 6.5 Raridade volta a ter valor 'normal'
+
+7 - Validando Super Trunfo
+ 7.1 Se a prop "hasTrunfo" já tiver um valor, exibir frase: "Você já tem um Super Trunfo em seu baralho"
+
+8 - Map de cartas salvas no state
+ 8.1 Renderizar no componente App
+ 8.2 Usar um map em um novo componente Card
+ 8.3 Passar Props
+
+9 - Remover carta
+ 9.1 Criar botão abaixo do passo 8
+ 9.2 Button com tipo 'button' deve conter texto "Excluir" e atributo 'data-testid="delete-button"'
+ 9.3 Se Super Trunfo for excluida, voltar a renderizar 'checkbox' do formulário
+
+10 - Filtro de nome
+ 10.1 Criar input acima do passo 8
+ 10.2 Deve conter tipo 'text' e atributo 'data-testid="name-filter'"
+ 10.3 Atualizar enquando o texto é digitado
+ 10.4 usar includes() dentro do filter
+
+11 - Filtro de raridade
+ 11.1 Criar campo 'select' com atributo 'data-testid="rare-filter'"
+ 11.2 Options: 
+	* todas
+	* normal
+	* raro
+	* muito raro
+ 11.3 Opção 'todas' deve estar selecionado por padrão
+ 11.4 Se filtro 'nome' estiver preenchido, os dois filtros funcionam juntos
+
+12 - Filtro de super trunfo
+ 12.1 Criar campo 'checkbox' com label "Super Trunfo" atributo 'data-testid="trunfo-filter'"
+ 12.2 Quando selecionando: 
+	* apenas a carta com prop Super Trunfo é renderizada
+	* Desabilitar filtros de nome e raridade
+
+13 - Iniciando jogo
+ 13.1 Criar button com type 'button' e texto 'Jogar'
+ 13.2 Criar novo state que recebe as cartas em ordem aleatória
+ 13.3 Usar para embaralhar: 
+	// let list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+	// list = list.sort(() => Math.random() - 0.5)
+ 13.4 Criar estado que identifica a posição do array
+	* Inicia em 0
+	* Soma 1 a cada carta puxada
+ 13.5 Renderização condicional para mostrar apenas a carta durande o jogo
+ 13.6 Exibir primeira carta ao inicial jogo
+
+14 - Próxima carta
+ 14.1 Exibir botão com type 'button' e texto 'Próxima carta'
+ 14.2 Ao clicar: 
+	* Utilizar state já criado para renderizar a próxima carta 
+
+15 - Recomeçar jogo
+ 15.1 Retirar botão 'Próxima carta' quando estiver na última carta do array
+ 15.2 Exibir botão  com type 'button' e texto 'Embaralhar cartas'
+ 15.3 Embaralhar cartas novamente e retornar estado a 0. Estados da etapa 13.
+
+
+
+
+
