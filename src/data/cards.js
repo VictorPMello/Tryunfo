@@ -45,7 +45,7 @@ const cards = [
   },
   {
     cardName: 'Liza Hawkeye',
-    cardDescription:"Auxiliar do Coronel Mustang. Oficial subalterna. Alcunha: Olhos de falcão.",
+    cardDescription:"Auxiliar do Coronel Mustang. Atiradora de elite. Alcunha: Olhos de falcão.",
     cardAttr1: '0',
     cardAttr2: '90',
     cardAttr3: '30',
